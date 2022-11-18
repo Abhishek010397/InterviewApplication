@@ -1,0 +1,89 @@
+
+{% include "sample.html" %}
+{% block body %}
+
+
+<main>
+  <div class="container">
+
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+            <div class="card mb-3">
+
+              <div class="card-body">
+
+                <div class="pt-4 pb-2">
+                  <h5 class="card-title text-center pb-0 fs-4" style="font-size: 20px;">Hi,Update the Credentials</h5>
+                  <p class="text-center large">Enter username password & Role to Update</p>
+                </div>
+
+                <form class="row g-3 needs-validation" method='POST' action="">
+
+                  {{ form.hidden_tag() }}
+                  
+                  <div class="form-group col-12">
+                      
+                    {{ form.username.label(class="form-control-label") }}
+          
+                    {% if form.username.errors %}
+                      {{ form.username(class="form-control form-control-sm is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                    {% else %}
+                      {{ form.username(class="form-control form-control-sm") }}
+                    {% endif %}
+                     
+                 </div>
+
+                 <div class="form-group col-12">
+                      
+                  {{form.password.label(class="form-control-label")}}
+
+                      {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-sm is-invalid") }}
+                          <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                              <span>{{ error }}</span>
+                            {% endfor %}
+                          </div>
+                      {% else %}
+                        {{form.password(class="form-control form-control-sm")}}
+                    {% endif %}
+              
+                 </div>
+
+                 <div class="form-group col-12">
+                  <label for="Role">Choose a Role:</label>
+                  <select id="role" name="role" required>
+                    <option value="">None</option>
+                    <option value="admin">Admin</option>
+                    <option value="editor">Editor</option>
+                    <option value="viewer">Viewer</option>
+                  </select>
+                </div>
+
+              <div class="form-group col-12" align="center">
+                  {{ form.submit(class="btn btn-primary w-45 h-15") }}
+              </div>
+     
+            </form>
+
+           </div>
+          </div>
+
+         </div>
+        </div>
+      </div>
+
+      </section>
+
+     </div>
+ </main><!-- End #main -->
+
+{% endblock %}

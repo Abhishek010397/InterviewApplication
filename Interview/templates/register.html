@@ -1,0 +1,93 @@
+{% include 'sample.html' %}
+{% block body %}
+
+<main id="main" class="main">
+
+  <section class="section">
+    <div class="row">
+      
+      <div class="col-lg-6">
+
+        <div class="card">
+          <div class="card-body">
+            <br>
+            <h5 class="card-title" style="text-align: center;">Please Register New User</h5>
+
+            <!-- Floating Labels Form -->
+            <form class="row g-3" method='POST' action="">
+			          {{ form.hidden_tag() }}
+              <div class="col-md-12">
+                <div class="form-floating">
+				
+                  {% if form.username.errors %}
+                      {{ form.username(class="form-control form-control-sm is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                    {% else %}
+                      {{ form.username(class="form-control form-control-sm") }}
+                    {% endif %}
+                    <label for="form.username" style="color: #012970;font-size:14px;">{{ form.username.label(class="form-control-label") }}</label>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-floating">
+				
+                  {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-sm is-invalid") }}
+                          <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                              <span>{{ error }}</span>
+                            {% endfor %}
+                          </div>
+                      {% else %}
+                        {{form.password(class="form-control form-control-sm")}}
+                    {% endif %}
+                    <label for="form.password" style="color: #012970;font-size:14px;">{{form.password.label(class="form-control-label")}}</label>
+                </div>
+              </div>
+              
+              <div class="col-12">
+                <div class="form-floating">
+				
+                  {% if form.confirm_password.errors %}
+                      {{ form.confirm_password(class="form-control form-control-sm is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.confirm_password.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                    {% else %}
+                      {{form.confirm_password(class="form-control form-control-sm")}}
+                    {% endif %}
+                    <label for="form.confirm_password" style="color: #012970;font-size:14px;">{{form.confirm_password.label(class="form-control-label")}}</label>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <div class="form-floating mb-8">
+                    <select id="role" name="role" class="form-select" style="font-size: 14px;height:50px;color: #012970;" required>
+                      <option value="" style="color: #012970;">None</option>
+                      <option value="admin" style="color: #012970;">Admin</option>
+                      <option value="editor" style="color: #012970;">InterviewCandidate</option>
+                    </select>
+                    <label for="role" style="color: #012970;font-size:14px;">role</label>
+                </div>
+              </div>
+              
+              <div class="text-center">
+                {{ form.submit(class="btn btn-primary w-60 h-15") }}
+              </div>
+            </form><!-- End floating Labels Form -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main><!-- End #main -->
+
+{% endblock %}

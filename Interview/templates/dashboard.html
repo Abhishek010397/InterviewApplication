@@ -1,0 +1,33 @@
+{% include 'sample.html' %}
+
+{% block body %}
+<p>
+    {% if current_user.is_authenticated %}
+      {% if current_user.is_active %}
+          <h1 style="text-align: center;"><strong>Welcome {{ current_user.username }} on DashBoard Page </strong></h1><br>
+      {% endif %}
+    {% endif %}
+</p></br>
+
+  {% if current_user.role == 'admin' %}
+
+      <div class="container" > 
+          <a href = "{{url_for('register')}}" class="btn_icon" id="btn" role="button" style="margin-left:300px;"><i class="fa fa-plus"><br>Register<br>User</i></a>
+          <div class="container" id="editor_div"> 
+            <a href = "{{url_for('main.registration_info')}}" style="margin-left:500px;" class="btn_icon" role="button"><i class="fa fa-video-camera" style="text-align: center;"><br>Webcam<br>Page</i></a>
+          </div>
+          <a href = "{{url_for('retrieveuserlist')}}" class="btn_icon" id="btn" role="button" style="margin-left:732px;padding-top: 11px;padding-left: 20px;"><i class="fa fa-eye"><br>View<br>Users</i></a>
+      </div>
+  {% elif current_user.role == 'viewer' %}
+  <div class="container" > 
+    <div class="container" id="editor_div"> 
+      <a href = "{{url_for('main.registration_info')}}" style="margin-left:500px;" class="btn_icon" role="button"><i class="fa fa-video-camera" style="text-align: center;"><br>Webcam<br>Page</i></a>
+    </div>
+  </div>
+  {% elif current_user.role == 'editor' %}
+  <div class="container" id="editor_div"> 
+    <a href = "{{url_for('main.registration_info')}}" style="margin-left:500px;" class="btn_icon" role="button"><i class="fa fa-video-camera" style="text-align: center;"><br>Webcam<br>Page</i></a>
+  </div>
+  {% endif %}
+                                           
+{% endblock %}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+    <style>
+    .button {
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    .button1 {background-color: #4CAF50;} /* Green */
+    .button2 {background-color: #008CBA;} /* Blue */
+    </style>
+</head>
+<body>
+    <h2>Your Tasks</h2>
+    <h3> TASK 1</h3>
+    <p>Use Terraform to perform the below Task:-</p>
+    <img src="https://s3.amazonaws.com/interview-cerebrone.ai-tasks/Task1.png" alt="Task1" width="500" height="333">
+    <p> Get Your Role ARN:-&nbsp;</p><a href = "{{url_for('get_arn')}}"><button class="button button1">Click me</button>
+        {% for message in messages %}
+            <div class='message'>
+                <h3>{{ message['RoleArn'] }}</h3>
+            </div>
+        {% endfor %}
+</body>
+</html>
+
+
+

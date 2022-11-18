@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/vendor/boxicons/css/boxicons.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/vendor/quill/quill.snow.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/vendor/quill/quill.bubble.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/vendor/remixicon/remixicon.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/vendor/simple-datatables/style.css') }}">
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/style.css') }}">
+
+</head>
+{% block body %}
+<body>
+    
+    <main>
+        <div class="container">
+    
+            <section class="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center">
+                <h1 style="text-align: center;color:#012970">404</h1>
+                <h2 style="text-align: center;color:#012970">The page you are looking for doesn't exist</h2>
+                {% if current_user.is_authenticated %}
+                  {% if current_user.is_active %}
+                <a class="btn btn-primary" href="{{ url_for('main.registration_info') }}" role="button" align="center">Back to home</a>
+                  {% endif %}
+                {% else %}
+                <a class="btn btn-primary" href="{{ url_for('login') }}" role="button" align="center">Back to home</a>
+                {% endif %}
+                <img src="{{ url_for('static', filename='assets/img/not-found.svg') }}" class="img-fluid py-5" alt="Page Not Found" height=400 width=500 align="center">
+            </section>
+    
+        </div>
+      </main>
+
+        <script src="{{url_for('static', filename='assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
+        <script src="{{url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{url_for('static', filename='assets/vendor/chart.js/chart.min.js')}}"></script>
+        <script src="{{url_for('static', filename='assets/vendor/echarts/echarts.min.js')}}"></script>
+        <script src="{{url_for('static', filename='assets/vendor/quill/quill.min.js')}}"></script>
+        <script src="{{url_for('static', filename='assets/vendor/simple-datatables/simple-datatables.js')}}"></script>
+        <script src="{{url_for('static', filename='assets/vendor/tinymce/tinymce.min.js')}}"></script>
+        <script src="{{url_for('static', filename='assets/vendor/php-email-form/validate.js')}}"></script>
+
+        <script src="{{url_for('static', filename='assets/js/main.js')}}"></script>
+</body>
+{% endblock %}
+</html>

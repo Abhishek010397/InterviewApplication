@@ -1,0 +1,70 @@
+{% include 'sample.html' %}
+{% block body %}
+
+<main id="main" class="main">
+
+  <section class="section">
+    <div class="row">
+      
+      <div class="col-lg-6">
+
+        <div class="card">
+          <div class="card-body">
+            <br>
+            <h5 class="card-title" style="text-align: center;">Hi {{ current_user.username }}</h5>
+          
+            <h4 style="text-align: center;font-size:16px;color:#012970;margin-top:-4%;"><b>Update Your New Username | Password</b></h4>
+            <!-- Floating Labels Form -->
+          </br>
+            <form class="row g-3" method='POST' action="">
+			          {{ form.hidden_tag() }}
+              <div class="col-md-12">
+                <div class="form-floating">
+				
+                  {% if form.username.errors %}
+                      {{ form.username(class="form-control form-control-sm is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                    {% else %}
+                      {{ form.username(class="form-control form-control-sm") }}
+                    {% endif %}
+                    <label for="form.username" style="color: #012970;font-size:14px;">{{ form.username.label(class="form-control-label") }}</label>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-floating">
+				
+                  {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-sm is-invalid") }}
+                          <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                              <span>{{ error }}</span>
+                            {% endfor %}
+                          </div>
+                      {% else %}
+                        {{form.password(class="form-control form-control-sm")}}
+                    {% endif %}
+                    <label for="form.password" style="color: #012970;font-size:14px;">{{form.password.label(class="form-control-label")}}</label>
+                </div>
+              </div>
+   
+              <div class="text-center">
+                {{ form.submit(class="btn btn-primary w-40 h-15") }}
+               
+              </div>
+            </form><!-- End floating Labels Form -->
+            
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+  </section>
+
+</main><!-- End #main -->
+
+{% endblock %}
